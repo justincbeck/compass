@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'compass'
+
+averager = Compass::Averager.new(STDOUT)
+
+averager.average(Float(ARGV[0]), Float(ARGV[1]))
