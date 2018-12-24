@@ -1,7 +1,28 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'compass'
+require 'ostruct'
+require 'optparse'
 
-averager = Compass::Averager.new(STDOUT)
+averager = Compass::Averager.new()
 
-averager.average(Float(ARGV[0]), Float(ARGV[1]))
+options = OpenStruct.new
+options.radians = false
+
+opt_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: compass [options]"
+  
+  opts.on("-r", "--radians", "Calculate using radians") do |r|
+    options.radians = true
+  end
+end
+
+begin
+  opt_parser.parse!
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument
+  puts $!.to_s
+  puts optparse
+  exit
+end
+
+averager.average(Float(ARGV[0]), Float(ARGV[1]), options.radians)
