@@ -7,13 +7,13 @@ module Compass
       larg = [a, b].max
       rarg = [a, b].min
 
-      if !radians
-        lrad = convert_to_radians(larg)
-        rrad = convert_to_radians(rarg)
-      else
+      # if !radians
+      #   lrad = convert_to_radians(larg)
+      #   rrad = convert_to_radians(rarg)
+      # else
         lrad = larg
         rrad = rarg
-      end
+      # end
 
       if lrad - rrad < 180
         # if the delta is less than 180 then we can
@@ -38,7 +38,7 @@ module Compass
     end
 
     def convert_to_radians(degrees)
-      return degrees
+      (degrees / 360) * (2 * Math::PI)
     end
   end
 end

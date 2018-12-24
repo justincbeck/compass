@@ -48,7 +48,14 @@ module Compass
       it "average two values in quadrants 2 & 4 (delta > 180)" do
         expect { averager.average(130, 320) }.to output("Average: 45\n").to_stdout
       end
+    end
 
+    context "#convert to radians" do
+      let(:averager) { Averager.new }
+
+      it "converts an angle in degress to an angle in radians" do
+        expect { averager.convert_to_radians(360) }.to receive(2 * Math::PI)
+      end
     end
   end
 end
