@@ -25,4 +25,4 @@ rescue OptionParser::InvalidOption, OptionParser::MissingArgument
   exit
 end
 
-averager.average(Float(ARGV[0]), Float(ARGV[1]), options.radians)
+puts averager.average(Float(ARGV[0]), Float(ARGV[1]), options.radians)
