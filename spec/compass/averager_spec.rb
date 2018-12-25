@@ -53,8 +53,20 @@ module Compass
     context "#convert to radians" do
       let(:averager) { Averager.new }
 
-      it "converts an angle in degress to an angle in radians" do
-        expect { averager.convert_to_radians(360) }.to receive(2 * Math::PI)
+      it "converts 360 degrees to 2pi radians" do
+        expect(averager.convert_to_radians(360)).to eql(2 * Math::PI)
+      end
+
+      it "converts 270 degrees to 3pi/2 radians" do
+        expect(averager.convert_to_radians(270)).to eql(3 * Math::PI / 2)
+      end
+
+      it "converts 180 degrees to pi radians" do
+        expect(averager.convert_to_radians(180)).to eql(Math::PI)
+      end
+
+      it "converts 90 degrees to pi/2 radians" do
+        expect(averager.convert_to_radians(90)).to eql(Math::PI / 2)
       end
     end
   end

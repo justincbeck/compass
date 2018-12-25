@@ -38,7 +38,7 @@ module Compass
     end
 
     def convert_to_radians(degrees)
-      (degrees / 360) * (2 * Math::PI)
+      (degrees / 360.0) * (2.0 * Math::PI)
     end
   end
 end
